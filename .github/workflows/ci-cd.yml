@@ -35,4 +35,4 @@ jobs:
     - name: Delete Old docker container
       run: sudo docker rm -f expresstest-container || true
     - name: Run Docker Container
-      run: sudo docker run -d -p 3000:8000 --name manaweb-api-container mag123c/manaweb-api
+      run: sudo docker run -d -p 3000:8000 --name expresstest-container jjang6251/expresstest
