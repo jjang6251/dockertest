@@ -26,30 +26,13 @@ jobs:
       run: docker push jjang6251/expresstest:latest
     
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-  
+
+    runs-on: self-hosted
+
     steps:
-    - name: Deploy to Server
-      env:
-        HOST_PASSWORD: ${{ secrets.HOST_PASSWORD }}
-      run: |
-        mkdir -p ~/.ssh/
-        echo "${{ secrets.HOST_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.HOST_IP }} >> ~/.ssh/known_hosts
-        
-        sshpass -p "$HOST_PASSWORD" ssh -o StrictHostKeyChecking=no user@${{ secrets.HOST_IP }} << EOF
-          # Docker 컨테이너 중지 및 제거
-          docker stop my-express-app || true
-          docker rm my-express-app || true
-          
-          # 최신 이미지 Pull
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/expresstest:latest
-          
-          # 컨테이너 실행
-          docker run -d \
-            --name expresstest \
-            -p 3000:8000 \
-            ${{ secrets.DOCKERHUB_USERNAME }}/expresstest:latest
-        EOF
+    - name: Pull Docker image
+      run: sudo docker pull jjang6251/expresstest:latest
+    - name: Delete Old docker container
+      run: sudo docker rm -f expresstest-container || true
+    - name: Run Docker Container
+      run: sudo docker run -d -p 3000:8000 --name manaweb-api-container mag123c/manaweb-api
