@@ -8,7 +8,7 @@ app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.json({message:"hello codecure!"});
+    res.json({message:"hello codecure!!"});
 });
 
 app.post('/posttest', (req, res) => {
