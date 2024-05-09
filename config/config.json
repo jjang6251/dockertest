@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "jjang",
+    "password": "assaassa0319",
+    "database": "spring",
+    "host": "34.64.99.131",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
