@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const models = require("./models");
+const cors = require('cors');
+
+app.use(cors());
 
 
 app.use(bodyParser.json());
@@ -43,6 +46,8 @@ app.post('/signup', (req, res) => {
         }
     })
 });
+
+
 
 
 
