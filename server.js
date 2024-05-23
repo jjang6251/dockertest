@@ -16,7 +16,7 @@ function verifyToken(req, res, next) {
     const token = req.headers.access_token;
 
     if (!token) {
-        return res.status(403).json({ message: 'NoToken' });
+        return res.status(403).json({ message: 'NoToken W' });
     } else {
         jwt.verify(token, "secret", (err, decoded) => {
             if (err) {
