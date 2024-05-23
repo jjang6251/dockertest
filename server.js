@@ -6,13 +6,13 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const { where } = require("sequelize");
 
-app.use(cors());
+// app.use(cors());
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-function verifyToken(req, res, next) {
+function verifyToken (req, res, next) {
     const token = req.headers.access_token;
 
     if (!token) {
