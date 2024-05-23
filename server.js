@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 function verifyToken (req, res, next) {
-    const token = req.headers.access_token;
+    const token = req.headers.accesstoken;
 
     if (!token) {
         return res.status(403).json({ message: 'NoToken W' });
