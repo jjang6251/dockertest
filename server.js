@@ -6,7 +6,9 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const { where } = require("sequelize");
 
-// app.use(cors());
+app.use(cors({
+    allowedHeaders: ['access_token', 'Content-Type']
+}));
 
 
 app.use(bodyParser.json());
